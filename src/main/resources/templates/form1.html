@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="utf-8">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center" th:text="${titulo}"></h1>
+				<div class="card-body">
+					<form th:action="@{/form1}" th:object="${venta}" method="post">
+						<input type="hidden" th:field="*{id}" th:value="${venta.id}" />
+						
+						<div class="form-group">
+	                    <label>TipoProducto : </label>
+	                    <select class="form-control" th:field="*{nombreproducto}">
+	                        <option th:value='VidrioAzul'>VidrioAzul</option>
+	                        <option th:value='VidrioAzulReflectivo'>VidrioAzulReflectivo</option>
+	                        <option th:value='VidrioBronce'>VidrioBronce</option>
+	                        <option th:value='VidrioBronceReflectivo'>VidrioBronceReflectivo</option>
+	                       <option th:value='VidrioTransparente'>VidrioTrasnparente</option>
+	                        <option th:value='VidrioAutomotriz'>VidrioTransparenteAutomotriz</option>
+	                        <option th:value='VidrioGris'>VidrioGris</option>
+	                        <option th:value='Espejo'>Espejo</option>
+	                        <option th:value='VidrioMartilladoBoreal'>VidrioMartilladoBoreal</option>
+	                        <option th:value='VidrioMasrtilladoCatedral'>VidrioMartilladoCatedral</option>
+	                        <option th:value='VidrioMartilladoFlor'>VidrioMartilladoFlor</option>
+	                        <option th:value='VidrioMartilladoArabezco'>VidrioMartilladoArabezco</option>
+	                    </select>
+						<div class="form-group">
+							<label>FechaVenta : </label> <input type="date"
+								th:field="*{fechaventa}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaventa')}"
+								th:errors="*{fechaventa}"></small>
+						</div>
+						<div class="form-group">
+							<label>Cantidad: </label> <input type="number"
+								th:field="*{cantidad}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('cantidad')}"
+								th:errors="*{cantidad}"></small>
+
+						</div>
+						
+						<div class="form-group">
+							<label>Grosor En mm: </label> <input type="number"
+								th:field="*{grosor}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('grosor')}"
+								th:errors="*{grosor}"></small>
+
+						</div>
+							<div class="form-group">
+							<label>Descripcion: </label> <input type="text"
+								th:field="*{descripcion}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"></small>
+
+						</div>
+							<div class="form-group">
+							<label>ValorTotal: </label> <input type="number"
+								th:field="*{valortotal}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('valortotal')}"
+								th:errors="*{valortotal}"></small>
+
+						</div>
+						<div class="box-footer">
+							<input type="submit" value="Guardar" class="btn btn-primary">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
